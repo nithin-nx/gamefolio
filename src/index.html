@@ -1,236 +1,228 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-        <link rel="icon" type="image/svg+xml" href="/pedestrian.svg" />
-        <link rel="stylesheet" fetchpriority="high" href="./styles/main.css">
-        <link rel="stylesheet" fetchpriority="high" href="./styles/loading.css">
-        <link rel="preload" fetchpriority="high" as="image" href="./resources/images/loading.gif">
-        <title>Stride</title>
-    </head>
 
-    <body>
-        <div id="sky">
-            <img src="./resources/images/sky/noon.png" alt="sky">
-        </div>
-        <div id="loading-screen">
-            <div class="loading-container">
-                <!-- <div class="loading-icon">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <link rel="icon" type="image/svg+xml" href="/pedestrian.svg" />
+    <link rel="stylesheet" fetchpriority="high" href="./styles/main.css">
+    <link rel="stylesheet" fetchpriority="high" href="./styles/loading.css">
+    <link rel="preload" fetchpriority="high" as="image" href="./resources/images/loading.gif">
+    <title>Stride</title>
+</head>
+
+<body>
+    <div id="sky">
+        <img src="./resources/images/sky/noon.png" alt="sky">
+    </div>
+    <div id="loading-screen">
+        <div class="loading-container">
+            <!-- <div class="loading-icon">
                     <img src="/purple.svg" alt="website icon">
                 </div> -->
-                <h2>‘STRIDE,</h2>
-                <p>is a mobile-optimized 3D web portfolio developed using HTML, CSS, and JavaScript, inspired by side-scrolling video games.</p>
-                <div class="loadingbar-container">
-                    <progress id="loading-bar" value="0" max="100"> 0% </progress>
-                    <p id="loading-text">Loading assets 0 out of 32</p>
-                </div>
+            <h2>‘STRIDE,</h2>
+            <p>is a mobile-optimized 3D web portfolio developed using HTML, CSS, and JavaScript, inspired by
+                side-scrolling video games.</p>
+            <div class="loadingbar-container">
+                <progress id="loading-bar" value="0" max="100"> 0% </progress>
+                <p id="loading-text">Loading assets 0 out of 32</p>
             </div>
         </div>
-        <div id="hud">
-            <canvas id="map-canvas"></canvas>
-            <div class="button-container">
-                <div class="button-flex">
-                    <lottie-player class="button-focus" loop autoplay src="./resources/animations/focus.json"></lottie-player>
-                    <div id="leftButton" class="control-button"></div>
-                </div>
-                <div class="button-flex">
-                    <lottie-player class="button-focus" loop autoplay src="./resources/animations/focus.json"></lottie-player>
-                    <div id="rightButton" class="control-button"></div>
-                </div>
+    </div>
+    <div id="hud">
+        <canvas id="map-canvas"></canvas>
+        <div class="button-container">
+            <div class="button-flex">
+                <lottie-player class="button-focus" loop autoplay
+                    src="./resources/animations/focus.json"></lottie-player>
+                <div id="leftButton" class="control-button"></div>
+            </div>
+            <div class="button-flex">
+                <lottie-player class="button-focus" loop autoplay
+                    src="./resources/animations/focus.json"></lottie-player>
+                <div id="rightButton" class="control-button"></div>
             </div>
         </div>
-        <div id="talkbubble-container">
-            <div class="talkbubble" id="talkbubble">
-                <div class="talkbubble-message" id="about-section">
-                    <div class="triangle"></div>
-                    <div class="talkbubble-badge">
-                        <lottie-player loop autoplay src="./resources/animations/gear.json"></lottie-player>
-                    </div>
-                    <p>
-                        This website was developed using 
-                    </p>
-                    <div class="auto-scroll">
-                        <div class="tools">
-                            <a class="highlight" href="https://threejs.org/" target="_blank">Three.js</a> 
-                            <a class="highlight" href="https://vitejs.dev/" target="_blank">Vite</a>
-                            <a class="highlight" href="https://www.blender.org/" target="_blank">Blender</a>
-                            <a class="highlight" href="https://rive.app/" target="_blank">Rive</a> 
-                            <a class="highlight" href="https://useanimations.com/" target="_blank">UseAnimations</a>
-                            <a class="highlight" href="https://www.opengl.org/" target="_blank">GLSL</a>
-                            <a class="highlight" href="https://krita.org/" target="_blank">Krita</a>
-                            <a class="highlight" href="https://inkscape.org/" target="_blank">Inkscape</a>
-                            <a class="highlight" href="https://www.mixamo.com/" target="_blank">Mixamo</a>
-                        </div>
-                        <div class="tools">
-                            <a class="highlight" href="https://threejs.org/" target="_blank">Three.js</a> 
-                            <a class="highlight" href="https://vitejs.dev/" target="_blank">Vite</a>
-                            <a class="highlight" href="https://www.blender.org/" target="_blank">Blender</a>
-                            <a class="highlight" href="https://rive.app/" target="_blank">Rive</a> 
-                            <a class="highlight" href="https://useanimations.com/" target="_blank">UseAnimations</a>
-                            <a class="highlight" href="https://www.opengl.org/" target="_blank">GLSL</a>
-                            <a class="highlight" href="https://krita.org/" target="_blank">Krita</a>
-                            <a class="highlight" href="https://inkscape.org/" target="_blank">Inkscape</a>
-                            <a class="highlight" href="https://www.mixamo.com/" target="_blank">Mixamo</a>
-                        </div>
-                    </div>
-                    <p>
-                        Thanks to,</br>
-                        <a class="highlight" href="https://sketchfab.com/boiko.pavlo4" target="_blank">Pavlo Boiko</a> 
-                        for bus 3D models.
-                    </p>
+    </div>
+    <div id="talkbubble-container">
+        <div class="talkbubble" id="talkbubble">
+            <div class="talkbubble-message" id="about-section">
+                <div class="triangle"></div>
+                <div class="talkbubble-badge">
+                    <lottie-player loop autoplay src="./resources/animations/gear.json"></lottie-player>
                 </div>
-                <div class="talkbubble-message" id="artwork-section">
-                    <div class="triangle"></div>
-                    <div class="talkbubble-badge">
-                        <lottie-player loop autoplay src="./resources/animations/media.json"></lottie-player>
+                <p>
+                    This website was developed using
+                </p>
+                <div class="auto-scroll">
+                    <div class="tools">
+                        <a class="highlight" href="https://threejs.org/" target="_blank">Three.js</a>
+                        <a class="highlight" href="https://vitejs.dev/" target="_blank">Vite</a>
+                        <a class="highlight" href="https://www.blender.org/" target="_blank">Blender</a>
+                        <a class="highlight" href="https://rive.app/" target="_blank">Rive</a>
+                        <a class="highlight" href="https://useanimations.com/" target="_blank">UseAnimations</a>
+                        <a class="highlight" href="https://www.opengl.org/" target="_blank">GLSL</a>
+                        <a class="highlight" href="https://krita.org/" target="_blank">Krita</a>
+                        <a class="highlight" href="https://inkscape.org/" target="_blank">Inkscape</a>
+                        <a class="highlight" href="https://www.mixamo.com/" target="_blank">Mixamo</a>
                     </div>
-                    <p>
-                        I use 
-                        <a class="highlight" href="https://krita.org/" target="_blank">Krita</a> 
-                        for digital art.
-                    </p> 
-                    <div class="gallery-container">
-                        <lottie-player class="scroll-button left" id="leftButtonGallery" src="./resources/animations/left.json"></lottie-player>
-                        <div class="gallery">
-                            <img type="image/webp" loading="lazy" src="./artwork/alone.webp">
-                            <img type="image/webp" loading="lazy" src="./artwork/weatherin-with-you.webp">
-                            <img type="image/webp" loading="lazy" src="./artwork/ip-girl.webp">
-                            <img type="image/webp" loading="lazy" src="./artwork/for-weirdos.webp">
-                            <img type="image/webp" loading="lazy" src="./artwork/batman.webp">
-                            <img type="image/webp" loading="lazy" src="./artwork/ashutti.webp">
-                        </div>
-                        <lottie-player class="scroll-button right" id="rightButtonGallery" src="./resources/animations/right.json"></lottie-player>
+                    <div class="tools">
+                        <a class="highlight" href="https://threejs.org/" target="_blank">Three.js</a>
+                        <a class="highlight" href="https://vitejs.dev/" target="_blank">Vite</a>
+                        <a class="highlight" href="https://www.blender.org/" target="_blank">Blender</a>
+                        <a class="highlight" href="https://rive.app/" target="_blank">Rive</a>
+                        <a class="highlight" href="https://useanimations.com/" target="_blank">UseAnimations</a>
+                        <a class="highlight" href="https://www.opengl.org/" target="_blank">GLSL</a>
+                        <a class="highlight" href="https://krita.org/" target="_blank">Krita</a>
+                        <a class="highlight" href="https://inkscape.org/" target="_blank">Inkscape</a>
+                        <a class="highlight" href="https://www.mixamo.com/" target="_blank">Mixamo</a>
                     </div>
                 </div>
-                <div class="talkbubble-message" id="intro-section">
-                    <div class="triangle"></div>
-                    <div class="talkbubble-badge">
-                        <lottie-player loop autoplay src="./resources/animations/dna.json"></lottie-player>
-                    </div>
-                    <p class="intro-message" id="intro-1">
-                        Hey, how's it goin'?!
-                    </p>
-                    <p class="intro-message" id="intro-2">
-                        Take a look at my <span class="highlight">portfolio.</span>
-                    </p>
-                    <p class="intro-message" id="intro-3">
-                        Explore using keyboard buttons <span class="highlight">A</span> & <span class="highlight">D</span>, 
-                        <span class="highlight">←</span> & <span class="highlight">→</span> or touch buttons.
-                    </p>
-                    <div id="intro-4">
-                        <p class="intro-message">
-                            I’m Jewel John, Gameplay & Graphics Engineer. These are my game development <span class="highlight">expertise</span>.
-                        </p>
-                        <div class="expertise">
-                            <table>
-                                <tr>
-                                    <th>SCRIPTING</th>
-                                    <th>GRAPHICS</th>
-                                    <th>TOOLS</th>
-                                </tr>
-                                <tr>
-                                    <td>C#</td>
-                                    <td>GLSL</td>
-                                    <td>Unity</td>
-                                </tr>
-                                <tr>
-                                    <td>OOP</td>
-                                    <td>Materials/Shaders</td>
-                                    <td>Blender</td>
-                                </tr>
-                                <tr>
-                                    <td>Mono</td>
-                                    <td>Modeling/Texturing</td>
-                                    <td>Photoshop</td>
-                                </tr>
-                                <tr>
-                                    <td>Editor Script</td>
-                                    <td>Rigging/Animation</td>
-                                    <td>Inkscape</td>
-                                </tr>
-                                <tr>
-                                    <td>Unity Events</td>
-                                    <td>Animation State Machines</td>
-                                    <td>FMOD</td>
-                                </tr>
-                                <tr>
-                                    <td>Scriptable Objects</td>
-                                    <td>SRP (URP/HDRP)</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Input Systems</td>
-                                    <td>User Interfaces</td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                <p>
+                    Thanks to,</br>
+                    <a class="highlight" href="https://sketchfab.com/boiko.pavlo4" target="_blank">Pavlo Boiko</a>
+                    for bus 3D models.
+                </p>
+            </div>
+            <div class="talkbubble-message" id="artwork-section">
+                <div class="triangle"></div>
+                <div class="talkbubble-badge">
+                    <lottie-player loop autoplay src="./resources/animations/media.json"></lottie-player>
                 </div>
-                <div class="talkbubble-message" id="project-section">
-                    <div class="triangle"></div>
-                    <div class="talkbubble-badge">
-                        <lottie-player loop autoplay src="./resources/animations/folder.json"></lottie-player>
+                <p>
+                    I use
+                    <a class="highlight" href="https://krita.org/" target="_blank">Krita</a>
+                    for digital art.
+                </p>
+                <div class="gallery-container">
+                    <lottie-player class="scroll-button left" id="leftButtonGallery"
+                        src="./resources/animations/left.json"></lottie-player>
+                    <div class="gallery">
+                        <img type="image/webp" loading="lazy" src="./artwork/alone.webp">
+                        <img type="image/webp" loading="lazy" src="./artwork/weatherin-with-you.webp">
+                        <img type="image/webp" loading="lazy" src="./artwork/ip-girl.webp">
+                        <img type="image/webp" loading="lazy" src="./artwork/for-weirdos.webp">
+                        <img type="image/webp" loading="lazy" src="./artwork/batman.webp">
+                        <img type="image/webp" loading="lazy" src="./artwork/ashutti.webp">
                     </div>
-                    <lottie-player class="scroll-button left align no-selection" id="leftButtonPortfolio" src="./resources/animations/left.json"></lottie-player>
-                    <div class="portfolio-container">
-                        <div class="portfolio">
-                            <div class="project selected">
-                                <div class="graphic">
-                                    <img type="image/webp" loading="lazy" src="./projects/burny-rush.webp">
+                    <lottie-player class="scroll-button right" id="rightButtonGallery"
+                        src="./resources/animations/right.json"></lottie-player>
+                </div>
+            </div>
+            <div class="talkbubble-message" id="intro-section">
+                <div class="triangle"></div>
+                <div class="talkbubble-badge">
+                    <lottie-player loop autoplay src="./resources/animations/dna.json"></lottie-player>
+                </div>
+                <p class="intro-message" id="intro-1">
+                    Hey, how's it goin'?!
+                </p>
+                <p class="intro-message" id="intro-2">
+                    Take a look at my <span class="highlight">portfolio.</span>
+                </p>
+                <p class="intro-message" id="intro-3">
+                    Explore using keyboard buttons <span class="highlight">A</span> & <span class="highlight">D</span>,
+                    <span class="highlight">←</span> & <span class="highlight">→</span> or touch buttons.
+                </p>
+                <div id="intro-4">
+                    <p class="intro-message">
+                        I’m Jewel John, Gameplay & Graphics Engineer. I work across the stack — from writing the code to
+                        crafting the visuals — on indie, mobile, and PC projects.
+                    </p>
+                </div>
+            </div>
+            <div class="talkbubble-message" id="project-section">
+                <div class="triangle"></div>
+                <div class="talkbubble-badge">
+                    <lottie-player loop autoplay src="./resources/animations/folder.json"></lottie-player>
+                </div>
+                <lottie-player class="scroll-button left align no-selection" id="leftButtonPortfolio"
+                    src="./resources/animations/left.json"></lottie-player>
+
+                <div class="portfolio-container">
+                    <div class="portfolio">
+
+                        <div class="project selected">
+                            <div class="project-body">
+                                <div class="project-header">
+                                    <img class="project-title-img" src="./projects/burny-rush.png" alt="Burny Rush">
                                 </div>
-                                <div class="content">
-                                    <h2>Burny Rush</h2>
-                                    <p>High-fidelity racing game for desktop. <span class="highlight">current project.</span></p>
-                                    <a href="https://jewelvjohn.github.io/burny-rush/" target="_blank"><span>VIEW PROJECT</span></a>
+                                <div class="project-info">
+                                    <p>High-fidelity desktop racing game concept with sophisticated vehicle controller
+                                        with a mix of arcade and realistic physics.</p>
+                                    <a href="https://jewelvjohn.github.io/burny-rush/" target="_blank"><span>VIEW
+                                            PROJECT</span></a>
                                 </div>
                             </div>
-                            <div class="project">
-                                <div class="graphic">
-                                    <img type="image/webp" loading="lazy" src="./projects/stratosphere.webp">
+                            <div class="project-art" style="background-image: url(./projects/burny-rush-showcase.webp);"></div>
+                        </div>
+
+                        <div class="project">
+                            <div class="project-body">
+                                <div class="project-header">
+                                    <img class="project-title-img" src="./projects/stratosphere.png" alt="Stratosphere">
                                 </div>
-                                <div class="content">
-                                    <h2>Stratosphere</h2>
-                                    <p>Third-person open-world game demo project.</p>
-                                    <a href="https://jewelvjohn.github.io/stratosphere/" target="_blank"><span>VIEW PROJECT</span></a>
+                                <div class="project-info">
+                                    <p>Third-person open-world game demo project prioritizing root-motion animation
+                                        state machines and character controllers.</p>
+                                    <a href="https://jewelvjohn.github.io/stratosphere/" target="_blank"><span>VIEW
+                                            PROJECT</span></a>
                                 </div>
                             </div>
+                            <div class="project-art" style="background-image: url(./projects/stratosphere-showcase.webp);"></div>
                         </div>
+
+                        <div class="project">
+                            <div class="project-body">
+                                <div class="project-header">
+                                    <img class="project-title-img" src="./projects/dark-descent.png" alt="Dark Descent">
+                                </div>
+                                <div class="project-info">
+                                    <p>A short, atmospheric exploration action horror game. Focused on mood, tension,
+                                        and the feeling of walking into a place that should've stayed sealed.</p>
+                                    <a href="https://jeweljohn.itch.io/dark-descent"
+                                        target="_blank"><span>EXPLORE</span></a>
+                                </div>
+                            </div>
+                            <div class="project-art" style="background-image: url(./projects/dark-descent-showcase.webp);"></div>
+                        </div>
+
                     </div>
-                    <lottie-player class="scroll-button right align no-selection" id="rightButtonPortfolio" src="./resources/animations/right.json"></lottie-player>
-                    <div class="dot-nav">
-                        <button class="dot-button selected no-selection" ></button>
-                        <button class="dot-button no-selection" ></button>
-                    </div>    
                 </div>
-                <div class="talkbubble-message" id="social-section">
-                    <div class="triangle"></div>
-                    <div class="talkbubble-badge">
-                        <lottie-player loop autoplay src="./resources/animations/messages.json"></lottie-player>
-                    </div>
-                    <p>
-                        Connect with me through my socials.
-                    </p> 
-                    <div class="talkbubble-social"> 
-                        <a href="https://www.linkedin.com/in/jewelvjohn/" target="_blank">
-                            <lottie-player loop hover src="./resources/animations/linkedin.json"></lottie-player>
-                        </a> 
-                        <a href="https://github.com/jewelvjohn" target="_blank">
-                            <lottie-player loop hover src="./resources/animations/github.json"></lottie-player>
-                        </a> 
-                        <a href="https://www.instagram.com/jewelvjohn/" target="_blank">
-                            <lottie-player id="instagram-camera" src="./resources/animations/instagram.json"></lottie-player>
-                        </a> 
-                        <a href="https://dribbble.com/jeweljohn" target="_blank">
-                            <lottie-player loop hover id="instagram-camera" src="./resources/animations/dribbble.json"></lottie-player>
-                        </a> 
-                    </div>
+                <lottie-player class="scroll-button right align no-selection" id="rightButtonPortfolio"
+                    src="./resources/animations/right.json"></lottie-player>
+                <div class="dot-nav">
+                    <button class="dot-button selected no-selection"></button>
+                    <button class="dot-button no-selection"></button>
+                    <button class="dot-button no-selection"></button>
+                </div>
+            </div>
+            <div class="talkbubble-message" id="social-section">
+                <div class="triangle"></div>
+                <div class="talkbubble-badge">
+                    <lottie-player loop autoplay src="./resources/animations/messages.json"></lottie-player>
+                </div>
+                <p>
+                    Connect with me through my socials.
+                </p>
+                <div class="talkbubble-social">
+                    <a href="https://www.linkedin.com/in/jewelvjohn/" target="_blank">
+                        <lottie-player loop hover src="./resources/animations/linkedin.json"></lottie-player>
+                    </a>
+                    <a href="https://github.com/jewelvjohn" target="_blank">
+                        <lottie-player loop hover src="./resources/animations/github.json"></lottie-player>
+                    </a>
+                    <a href="https://www.instagram.com/jewelvjohn/" target="_blank">
+                        <lottie-player id="instagram-camera"
+                            src="./resources/animations/instagram.json"></lottie-player>
+                    </a>
                 </div>
             </div>
         </div>
-        <canvas class="webgl">
+    </div>
+    <canvas class="webgl">
         <script type="module" src="/main.js"></script>
-    </body>
+</body>
+
 </html>

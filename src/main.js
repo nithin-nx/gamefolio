@@ -292,64 +292,88 @@ function initializeGallery() {
 }
 
 function initializePortfolio() {
-    const container = document.querySelector(".portfolio-container");
     const portfolio = document.querySelector(".portfolio");
     const projects = Array.from(portfolio.children);
     const navigation = document.querySelector(".dot-nav");
     const navButtons = Array.from(navigation.children);
     const prevButton = document.querySelector("#leftButtonPortfolio");
     const nextButton = document.querySelector("#rightButtonPortfolio");
-    
+
+    let currentIndex = 0;
     prevButton.style.display = "none";
 
-    const movePortfolio = (currentCell, targetCell) => {
-        const amount = targetCell.getBoundingClientRect().left - currentCell.getBoundingClientRect().left;
-        container.scrollLeft += amount;
+    const updatePortfolio = (targetIndex) => {
+        if (targetIndex < 0 || targetIndex >= projects.length) return;
 
-        const targetIndex = projects.findIndex(project => project === targetCell);
-        const currentDot = navigation.querySelector(".selected");
-        const targetDot = navButtons[targetIndex];
+        // Slide via CSS transform on the portfolio strip
+        const cardWidth = projects[0].getBoundingClientRect().width;
+        portfolio.style.transform = `translateX(${-targetIndex * cardWidth}px)`;
 
-        if(targetIndex === projects.length - 1) nextButton.style.display = "none";
-        else nextButton.style.display = "block";
+        // Update selected state
+        projects[currentIndex].classList.remove("selected");
+        navButtons[currentIndex].classList.remove("selected");
+        projects[targetIndex].classList.add("selected");
+        navButtons[targetIndex].classList.add("selected");
 
-        if(targetIndex === 0) prevButton.style.display = "none";
-        else prevButton.style.display = "block";
+        currentIndex = targetIndex;
 
-        currentDot.classList.remove("selected");
-        targetDot.classList.add("selected");
-        currentCell.classList.remove("selected");
-        targetCell.classList.add("selected");
-    }
+        prevButton.style.display = currentIndex === 0 ? "none" : "block";
+        nextButton.style.display = currentIndex === projects.length - 1 ? "none" : "block";
+    };
 
     nextButton.addEventListener("click", (e) => {
         e.preventDefault();
-        const currentCell = portfolio.querySelector(".selected");
-        const nextCell = currentCell.nextElementSibling;
-        if(!nextCell) return;
-        movePortfolio(currentCell, nextCell);
+        updatePortfolio(currentIndex + 1);
     });
 
     prevButton.addEventListener("click", (e) => {
         e.preventDefault();
-        const currentCell = portfolio.querySelector(".selected");
-        const prevCell = currentCell.previousElementSibling;
-        if(!prevCell) return;
-        movePortfolio(currentCell, prevCell);
+        updatePortfolio(currentIndex - 1);
     });
 
     navigation.addEventListener("click", (e) => {
         const targetDot = e.target.closest("button");
-        if(!targetDot) return;
-        if(targetDot.classList.contains("selected")) return;
-
+        if (!targetDot) return;
         const targetIndex = navButtons.findIndex(dot => dot === targetDot);
-        const targetCell = projects[targetIndex];
-        const currentCell = portfolio.querySelector(".selected");
-
-        movePortfolio(currentCell, targetCell);
+        if (targetIndex === currentIndex) return;
+        updatePortfolio(targetIndex);
     });
+
+    // ── Touch swipe support ──
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isSwiping = false;
+
+    portfolio.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isSwiping = true;
+    }, { passive: true });
+
+    portfolio.addEventListener("touchmove", (e) => {
+        if (!isSwiping) return;
+        const dx = e.touches[0].clientX - touchStartX;
+        const dy = e.touches[0].clientY - touchStartY;
+        // Only handle horizontal swipes (prevent scroll hijack)
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    portfolio.addEventListener("touchend", (e) => {
+        if (!isSwiping) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        isSwiping = false;
+
+        // Only trigger on clearly horizontal swipes (>40px, not mostly vertical)
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) updatePortfolio(currentIndex + 1); // swipe left → next
+            else         updatePortfolio(currentIndex - 1); // swipe right → prev
+        }
+    }, { passive: true });
 }
+
 
 function textBubbleFadeIn() {
     textBubble.animate([
